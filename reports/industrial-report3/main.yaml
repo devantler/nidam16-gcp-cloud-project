@@ -6,7 +6,6 @@ filters:
   - ../_filters/include-files.lua
   - ../_filters/include-code-files.lua
   - ../_filters/diagram-generator.lua
-  - ../_filters/glossaries.lua
   - ../_filters/max-numbering-level.lua
 
 # Metadata
@@ -41,10 +40,7 @@ variables:
   date: December 13th, 2023
   publish: true
   header-includes: | 
-      \usepackage{glossaries}
       \usepackage{authblk}
       \usepackage{graphicx}
       \graphicspath{{images/}}
       \usepackage{easy-todo}
-      \makenoidxglossaries
-      \loadglsentries{resources/_glossaries.tex}
