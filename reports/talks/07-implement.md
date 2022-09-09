@@ -1,0 +1,1 @@
+# Talk 7 (4 Nov, 13:30-14:30): Implement - Nikolaj Skov Purup, Cloud Architect at Implement Group

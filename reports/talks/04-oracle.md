@@ -1,0 +1,1 @@
+# Talk 4 (30 Sep, 13:30-14:30): Oracle - Marc Jardorf, Head of Tech Cloud Sales & Country Leader Oracle Denmark
