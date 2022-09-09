@@ -20,7 +20,7 @@
             },
             "problemMatcher": [],
             "options": {
-                "cwd": "papers/reports/industrial-report1"
+                "cwd": "reports/industrial-report1"
             }
         },
         {
@@ -42,7 +42,7 @@
             },
             "problemMatcher": [],
             "options": {
-                "cwd": "papers/reports/industrial-report2"
+                "cwd": "reports/industrial-report2"
             }
         },
         {
@@ -64,7 +64,7 @@
             },
             "problemMatcher": [],
             "options": {
-                "cwd": "papers/reports/industrial-report3"
+                "cwd": "reports/industrial-report3"
             }
         }
     ]

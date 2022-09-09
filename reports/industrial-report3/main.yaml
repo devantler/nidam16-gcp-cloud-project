@@ -22,11 +22,9 @@ number-sections: true
 variables:
   documentclass: article
   link-citations: true 
-  classoption:
-  - a4paper
-  fontsize: 11pt
+  fontsize: 10pt
   geometry:
-    - margin=1in
+    - margin=0.7in
   title: |
     Title
   subtitle: |
