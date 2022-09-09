@@ -18,8 +18,6 @@ bibliography: bibliography.bib
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/ieee.csl # the citation style (change *.csl to target another style)
 
 # Document Configuration
-toc: true
-toc-depth: 2
 number-sections: true
 variables:
   documentclass: article
