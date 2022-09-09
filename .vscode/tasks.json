@@ -1,0 +1,71 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Industrial Report 1",
+            "type": "shell",
+            "command": "pandoc -d main.yaml -o industrial-report1.pdf content/*.md",
+            "detail": "Build the Industrial Report 1 (PDF)",
+            "icon": {
+                "light": "resources/light/compile.svg",
+                "dark": "resources/dark/compile.svg"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "options": {
+                "cwd": "reports/industrial-report1"
+            }
+        },
+        {
+            "label": "Build Industrial Report 2",
+            "type": "shell",
+            "command": "pandoc -d main.yaml -o industrial-report2.pdf content/*.md",
+            "detail": "Build the Industrial Report 2 (PDF)",
+            "icon": {
+                "light": "resources/light/compile.svg",
+                "dark": "resources/dark/compile.svg"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "options": {
+                "cwd": "reports/industrial-report2"
+            }
+        },
+        {
+            "label": "Build Industrial Report 3",
+            "type": "shell",
+            "command": "pandoc -d main.yaml -o industrial-report3.pdf content/*.md",
+            "detail": "Build the Industrial Report 3 (PDF)",
+            "icon": {
+                "light": "resources/light/compile.svg",
+                "dark": "resources/dark/compile.svg"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "options": {
+                "cwd": "reports/industrial-report3"
+            }
+        }
+    ]
+}

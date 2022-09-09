@@ -6,7 +6,6 @@ filters:
   - ../_filters/include-files.lua
   - ../_filters/include-code-files.lua
   - ../_filters/diagram-generator.lua
-  - ../_filters/glossaries.lua
   - ../_filters/max-numbering-level.lua
 
 # Metadata
@@ -19,17 +18,13 @@ bibliography: bibliography.bib
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/ieee.csl # the citation style (change *.csl to target another style)
 
 # Document Configuration
-toc: true
-toc-depth: 2
 number-sections: true
 variables:
   documentclass: article
   link-citations: true 
-  classoption:
-  - a4paper
-  fontsize: 11pt
+  fontsize: 10pt
   geometry:
-    - margin=1in
+    - margin=0.7in
   title: |
     Title
   subtitle: |
@@ -41,10 +36,7 @@ variables:
   date: December 13th, 2023
   publish: true
   header-includes: | 
-      \usepackage{glossaries}
       \usepackage{authblk}
       \usepackage{graphicx}
       \graphicspath{{images/}}
       \usepackage{easy-todo}
-      \makenoidxglossaries
-      \loadglsentries{resources/_glossaries.tex}
