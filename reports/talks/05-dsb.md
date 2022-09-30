@@ -1,1 +1,0 @@
-# Talk 5 (7 Oct, 13:30-14:30): DSB - Simon Balahang Jensen, Cloud Lead Architect @ DSB
