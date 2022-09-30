@@ -1,1 +1,0 @@
-# Talk 8 (11 Nov, 13:30-14:30): Amazon (AWS) - Jelena Uzunovic, Principal Solutions Architect
