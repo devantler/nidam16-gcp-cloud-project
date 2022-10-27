@@ -37,7 +37,7 @@ MongoClient.connect(getDbConnectionString(), async (err, client) => {
             const port = process.env.PORT;
             
             server.listen(port, async () => {
-                const db = client.db(process.env.MONGO_ATLAS_DB_NAME);
+                const db = client.db(process.env.MONGO_DB_NAME);
                 app.set('database', db);
     
                 databaseManager = new MongoDbmanager();
