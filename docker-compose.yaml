@@ -12,7 +12,7 @@ services:
     environment:
       - PORT=3000
       - NODE_ENV=development
-      - MONGO_DB_CONNECTION_STRING=mongodb://devantler:password@mongo:27017
+      - MONGO_DB_CONNECTION_STRING=mongodb://devantler:password@mongo:27017 # Local connection string
       - MONGO_DB_NAME=admin
       - REDIS_URI=redis://redis:6379
     depends_on:
