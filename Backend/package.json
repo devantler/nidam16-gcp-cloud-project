@@ -42,7 +42,7 @@
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.18.11/xlsx-0.18.11.tgz"
   },
   "devDependencies": {
-    "@types/node": "18.11.7",
+    "@types/node": "18.11.8",
     "socket.io-client": "4.5.3"
   },
   "optionalDependencies": {
