@@ -21,16 +21,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-      - name: Set up Docker BuildX
-        uses: docker/setup-buildx-action@v2
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           context: Frontend/
           file: Frontend/Dockerfile
-          platforms: linux/amd64, linux/arm64
+          platforms: linux/amd64
           load: true
           tags: ${{ github.repository_owner }}/ccecaa-frontend
           cache-from: type=gha
@@ -51,16 +47,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-      - name: Set up Docker BuildX
-        uses: docker/setup-buildx-action@v2
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           context: Backend/
           file: Backend/Dockerfile
-          platforms: linux/amd64, linux/arm64
+          platforms: linux/amd64
           load: true
           tags: ${{ github.repository_owner }}/ccecaa-backend
           cache-from: type=gha
