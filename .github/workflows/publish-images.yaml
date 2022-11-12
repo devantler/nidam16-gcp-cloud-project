@@ -9,6 +9,9 @@ on:
     branches:
       - master
 
+env:
+    GC_PROJECT_ID: formal-vertex-364508
+
 jobs:
   build-and-publish-ccecaa-frontend:
     runs-on: ubuntu-22.04
@@ -44,6 +47,12 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - name: Push image to Google Container registry
+        uses: mattes/gce-docker-push-action@v1
+        with:
+            creds: ${{ secrets.GOOGLE_CREDENTIALS }}
+            src: ghcr.io/${{ github.repository_owner }}/ccecaa-frontend:master
+            dst: gcr.io/${{ env.GC_PROJECT_ID }}/ccecaa-frontend:${{github.run_number}}-${{github.sha}}
   build-and-publish-ccecaa-backend:
     runs-on: ubuntu-22.04
     permissions:
@@ -78,3 +87,9 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - name: Push image to Google Container registry
+        uses: mattes/gce-docker-push-action@v1
+        with:
+            creds: ${{ secrets.GOOGLE_CREDENTIALS }}
+            src: ghcr.io/${{ github.repository_owner }}/ccecaa-backend:master
+            dst: gcr.io/${{ env.GC_PROJECT_ID }}/ccecaa-backend:${{github.run_number}}-${{github.sha}}
