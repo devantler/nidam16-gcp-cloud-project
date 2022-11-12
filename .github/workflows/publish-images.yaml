@@ -43,7 +43,6 @@ jobs:
           file: Frontend/Dockerfile
           platforms: linux/amd64, linux/arm64
           load: true
-          push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
@@ -86,7 +85,6 @@ jobs:
           file: Backend/Dockerfile
           platforms: linux/amd64, linux/arm64
           load: true
-          push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
