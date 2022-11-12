@@ -1,13 +1,8 @@
-name: Publish Images
+name: Publish Images and Terraform CI
 on:
-  workflow_dispatch:
-  push:
-    paths:
-      - "Backend/**"
-      - "Frontend/**"
-      - ".github/workflows/publish-images.yaml"
-    branches:
-      - master
+    workflow_dispatch:
+    push:
+        branches: [master]
 
 env:
     GC_PROJECT_ID: formal-vertex-364508
@@ -61,3 +56,22 @@ jobs:
             creds: ${{ secrets.GOOGLE_CREDENTIALS }}
             src: ${{ github.repository_owner }}/ccecaa-backend
             dst: gcr.io/${{ env.GC_PROJECT_ID }}/ccecaa-backend:latest
+
+  terraform:
+    needs: [build-and-push-backend-image, build-and-push-frontend-image]
+    runs-on: ubuntu-latest
+    defaults:
+        run:
+            working-directory: terraform
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+      - name: Setup Terraform to be used in the GitHub Action
+        uses: hashicorp/setup-terraform@v2
+        with:
+            cli_config_credentials_token: ${{ secrets.TF_API_TOKEN}}
+      - run: terraform init
+      - run: terraform plan
+      - run: terraform apply -auto-approve
+      - name: TROELS IS A CUNT
+        run: echo "Hey my name is troels and i am a cunt!"
