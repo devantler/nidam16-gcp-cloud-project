@@ -9,7 +9,6 @@ terraform {
 }
 provider "google" {
   project = "formal-vertex-364508" //TODO: Move project ID to a variable and find out how to use that.
-  credentials = var.gcp_credentials
 }
 
 

@@ -9,7 +9,7 @@ defaults:
     working-directory: terraform
 
 env:
-    GOOGLE_APPLICATION_CREDENTIALS: google-credentials.json
+    GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
 jobs:
     terraform:
@@ -29,7 +29,6 @@ jobs:
               continue-on-error: true
             - name: Terraform Plan
               run: terraform plan
-              env:
-                GOOGLE_APPLICATION_CREDENTIALS: google-credentials.json
+
             - name: Terraform Apply
               run: terraform apply -auto-approve
