@@ -58,7 +58,7 @@ jobs:
             dst: gcr.io/${{ env.GC_PROJECT_ID }}/ccecaa-backend:latest
 
   terraform:
-    needs: [build-and-push-backend-image, build-and-push-frontend-image]
+    needs: [build-and-publish-ccecaa-frontend, build-and-publish-ccecaa-backend]
     runs-on: ubuntu-latest
     defaults:
         run:
