@@ -14,44 +14,44 @@ actor User
 actor Developer
 
 artifact "GitHub Repository"
-agent "GitHub Action"
-agent "Terraform Job"
+agent "GitHub Action" as gha
+agent "Terraform Job" as iac
 
-interface "GCP APIs"
+interface "GCP APIs" as gcpapis
 cloud GCP {
-    interface "Cloud CDN"
-    interface "Load Balancer"
+    interface "Cloud CDN" as cdn
+    interface "Load Balancer" as lb1
+    interface "Load Balancer" as lb2
     package "Cloud Run" {
         [WebFrontend]
         [Backend]
     }
-    [MongoDB Atlas]
-    [Redis]
+    database "MongoDB Atlas" as mongo
+    database Redis
     [Google Maps]
 }
 [MobileFrontend]
 
 ' Relations
 Developer -up-> [GitHub Repository]: Pushes code
-User --> "Cloud CDN"
+User --> cdn
 User --> MobileFrontend
 
-[GitHub Repository] <.up. "GitHub Action" : Triggered by push
-"GitHub Action" -up-> "Terraform Job" : Triggers Terraform
-"Terraform Job" -up-> "GCP APIs": Calls provisioning APIs
-"GCP APIs" --> GCP: Creates resources
+[GitHub Repository] <.up. gha : Triggered by push
+gha -up-> iac : Triggers Terraform
+iac -up-> gcpapis: Calls provisioning APIs
+gcpapis --> GCP: Creates resources
 
-"Cloud CDN" <--> "Load Balancer" : Requests and caching
-"Load Balancer" --> WebFrontend
-"Load Balancer" --> Backend
+cdn <--> lb1 : Requests and caching
+lb1 --> WebFrontend
+lb2 --> Backend
 WebFrontend --> Backend
-MobileFrontend ---> Backend
+MobileFrontend ---> lb2
 WebFrontend -right-> [Google Maps]
 MobileFrontend ---> [Google Maps]
 
-Backend --> "MongoDB Atlas"
+Backend --> mongo
 Backend -right-> Redis : Caching and state
-
 @enduml
 ```
 
