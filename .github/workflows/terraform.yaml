@@ -8,9 +8,6 @@ defaults:
   run:
     working-directory: terraform
 
-env:
-    GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-
 jobs:
     terraform:
         runs-on: ubuntu-latest
@@ -29,6 +26,5 @@ jobs:
               continue-on-error: true
             - name: Terraform Plan
               run: terraform plan
-
             - name: Terraform Apply
               run: terraform apply -auto-approve
