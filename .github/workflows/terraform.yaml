@@ -4,9 +4,6 @@ on:
     push:
         branches: [master]
 
-env:
-    GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-
 jobs:
     terraform:
         runs-on: ubuntu-latest
@@ -18,6 +15,8 @@ jobs:
               uses: hashicorp/setup-terraform@v2
             - name: Terraform Init
               run: terraform -chdir=terraform init
+              env:
+                  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
             - name: Terraform Format
               run: terraform -chdir=terraform fmt -check
             - name: Terraform Plan
