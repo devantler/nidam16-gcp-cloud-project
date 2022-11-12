@@ -36,7 +36,7 @@ jobs:
         with:
             creds: ${{ secrets.GOOGLE_CREDENTIALS }}
             src: ${{ github.repository_owner }}/ccecaa-frontend
-            dst: gcr.io/${{ env.GC_PROJECT_ID }}/ccecaa-frontend:${{github.run_number}}-${{github.sha}}
+            dst: gcr.io/${{ env.GC_PROJECT_ID }}/ccecaa-frontend:latest
   build-and-publish-ccecaa-backend:
     runs-on: ubuntu-22.04
     permissions:
@@ -60,4 +60,4 @@ jobs:
         with:
             creds: ${{ secrets.GOOGLE_CREDENTIALS }}
             src: ${{ github.repository_owner }}/ccecaa-backend
-            dst: gcr.io/${{ env.GC_PROJECT_ID }}/ccecaa-backend:${{github.run_number}}-${{github.sha}}
+            dst: gcr.io/${{ env.GC_PROJECT_ID }}/ccecaa-backend:latest
