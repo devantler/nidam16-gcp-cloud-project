@@ -73,5 +73,3 @@ jobs:
       - run: terraform init
       - run: terraform plan
       - run: terraform apply -auto-approve
-      - name: TROELS IS A CUNT
-        run: echo "Hey my name is troels and i am a cunt!"
