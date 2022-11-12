@@ -47,6 +47,8 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - name: list docker images
+        run: docker image list
       - name: Push image to Google Container registry
         uses: mattes/gce-docker-push-action@v1
         with:
@@ -87,6 +89,8 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - name: list docker images
+        run: docker image list
       - name: Push image to Google Container registry
         uses: mattes/gce-docker-push-action@v1
         with:
