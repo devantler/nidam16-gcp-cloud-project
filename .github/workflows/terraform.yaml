@@ -25,6 +25,7 @@ jobs:
                   GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
             - name: Terraform Format
               run: terraform fmt -check
+              continue-on-error: true
             - name: Terraform Plan
               run: terraform plan
             - name: Terraform Apply
