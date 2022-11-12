@@ -4,6 +4,10 @@ on:
     push:
         branches: [master]
 
+defaults:
+  run:
+    working-directory: terraform
+
 jobs:
     terraform:
         runs-on: ubuntu-latest
@@ -15,8 +19,6 @@ jobs:
               uses: hashicorp/setup-terraform@v2
               with:
                 cli_config_credentials_token: ${{ secrets.TF_API_TOKEN}}
-            - name: Change directory
-              run: cd terraform
             - name: Terraform Init
               run: terraform init
               env:
