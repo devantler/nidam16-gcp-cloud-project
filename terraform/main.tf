@@ -23,7 +23,7 @@ resource "google_cloud_run_service" "default" {
   template {
     spec {
       containers {
-        image = "ghcr.io/devantler/ccecaa-frontend:master"
+        image = "gcr.io/formal-vertex-364508/ccecaa-frontend:master"
       }
     }
   }

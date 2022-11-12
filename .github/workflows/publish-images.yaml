@@ -51,7 +51,7 @@ jobs:
         uses: mattes/gce-docker-push-action@v1
         with:
             creds: ${{ secrets.GOOGLE_CREDENTIALS }}
-            src: ghcr.io/${{ github.repository_owner }}/ccecaa-frontend:master
+            src: ghcr.io/${{ github.repository_owner }}/ccecaa-frontend
             dst: gcr.io/${{ env.GC_PROJECT_ID }}/ccecaa-frontend:${{github.run_number}}-${{github.sha}}
   build-and-publish-ccecaa-backend:
     runs-on: ubuntu-22.04
@@ -91,5 +91,5 @@ jobs:
         uses: mattes/gce-docker-push-action@v1
         with:
             creds: ${{ secrets.GOOGLE_CREDENTIALS }}
-            src: ghcr.io/${{ github.repository_owner }}/ccecaa-backend:master
+            src: ghcr.io/${{ github.repository_owner }}/ccecaa-backend
             dst: gcr.io/${{ env.GC_PROJECT_ID }}/ccecaa-backend:${{github.run_number}}-${{github.sha}}
