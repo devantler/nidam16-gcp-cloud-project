@@ -29,8 +29,6 @@ jobs:
           platforms: linux/amd64
           load: true
           tags: ${{ github.repository_owner }}/ccecaa-frontend
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
       - name: list docker images
         run: docker image list
       - name: Push image to Google Container registry
@@ -55,8 +53,6 @@ jobs:
           platforms: linux/amd64
           load: true
           tags: ${{ github.repository_owner }}/ccecaa-backend
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
       - name: list docker images
         run: docker image list
       - name: Push image to Google Container registry
