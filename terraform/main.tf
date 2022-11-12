@@ -18,7 +18,7 @@ provider "google" {
 
 resource "google_cloud_run_service" "default" {
   name     = "frontend"
-  location = "eurupe-west3"
+  location = "eurupe-west1"
 
   template {
     spec {
