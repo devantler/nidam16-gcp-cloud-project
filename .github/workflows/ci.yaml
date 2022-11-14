@@ -20,6 +20,11 @@ jobs:
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+      - name: Docker metadata
+        id: metadata
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ github.repository_owner }}/ccecaa-frontend
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
@@ -27,7 +32,8 @@ jobs:
           file: Frontend/Dockerfile
           platforms: linux/amd64
           load: true
-          tags: ${{ github.repository_owner }}/ccecaa-frontend
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Push image to Google Container registry
@@ -48,6 +54,11 @@ jobs:
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+      - name: Docker metadata
+        id: metadata
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ github.repository_owner }}/ccecaa-backend
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
@@ -55,7 +66,8 @@ jobs:
           file: Backend/Dockerfile
           platforms: linux/amd64
           load: true
-          tags: ${{ github.repository_owner }}/ccecaa-backend
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Push image to Google Container registry
