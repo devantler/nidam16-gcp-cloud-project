@@ -1,2 +1,11 @@
 .DS_STORE
 data/db
+
+# Terraform
+
+Raw Blame
+
+ 
+# Local .terraform directories
+**/.terraform/*
+.terraform.lock.hcl

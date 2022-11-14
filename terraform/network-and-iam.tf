@@ -10,6 +10,7 @@ resource "google_cloud_run_service_iam_member" "default" {
 
 
 resource "google_compute_region_network_endpoint_group" "default" {
+  provider = google-beta
   for_each = toset(var.regions)
 
   name                  = "neg-${each.key}"
