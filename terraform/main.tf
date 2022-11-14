@@ -1,4 +1,15 @@
+# TODO: We use terraform cloud as an environment host for our terraform code. If we can find a way to read gcp_credentials from github action environments we do not need this.
 terraform {
+  required_providers {
+    google = {
+      source = "hashicorp/google"
+      version = ">= 3.67.0"
+    }
+    google-beta = {
+      source = "hashicorp/google-beta"
+      version = ">= 3.67.0"
+    }
+  }
   cloud {
     organization = "ccecaa-cloud"
 
