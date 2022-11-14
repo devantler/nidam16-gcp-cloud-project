@@ -16,16 +16,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-      - name: Docker metadata
+
+      - name: Add metadata to image
         id: metadata
         uses: docker/metadata-action@v4
         with:
           images: ${{ github.repository_owner }}/ccecaa-frontend
-      - name: Build and push Docker image
+
+      - name: Build and load image with caching
         uses: docker/build-push-action@v3
         with:
           context: Frontend/
@@ -36,12 +40,14 @@ jobs:
           labels: ${{ steps.metadata.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      - name: Push image to Google Container registry
+
+      - name: Push image to Google Container Registry
         uses: mattes/gce-docker-push-action@v1
         with:
             creds: ${{ secrets.GOOGLE_CREDENTIALS }}
             src: ${{ github.repository_owner }}/ccecaa-frontend:master
             dst: gcr.io/${{ env.GC_PROJECT_ID }}/ccecaa-frontend:latest
+
   build-and-publish-ccecaa-backend:
     runs-on: ubuntu-22.04
     permissions:
@@ -50,16 +56,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-      - name: Docker metadata
+
+      - name: Add metadata to image
         id: metadata
         uses: docker/metadata-action@v4
         with:
           images: ${{ github.repository_owner }}/ccecaa-backend
-      - name: Build and push Docker image
+
+      - name: Build and load image with caching
         uses: docker/build-push-action@v3
         with:
           context: Backend/
@@ -70,7 +80,8 @@ jobs:
           labels: ${{ steps.metadata.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      - name: Push image to Google Container registry
+
+      - name: Push image to Google Container Registry
         uses: mattes/gce-docker-push-action@v1
         with:
             creds: ${{ secrets.GOOGLE_CREDENTIALS }}
@@ -86,14 +97,18 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v3
+
       - name: Setup Terraform to be used in the GitHub Action
         uses: hashicorp/setup-terraform@v2
         with:
             cli_config_credentials_token: ${{ secrets.TF_API_TOKEN}}
+
       - run: terraform init
+
       - run: terraform plan
         env:
             GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
       - run: terraform apply -auto-approve
         env:
             GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
