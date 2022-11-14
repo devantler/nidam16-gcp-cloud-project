@@ -80,7 +80,8 @@ module "lb-http" {
       description            = null
       enable_cdn             = false
       custom_request_headers = null
-
+      custom_response_headers = null
+      
       log_config = {
         enable      = true
         sample_rate = 1.0
