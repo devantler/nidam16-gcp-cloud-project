@@ -7,23 +7,37 @@ terraform {
     }
   }
 }
+
 provider "google" {
   project = "formal-vertex-364508" //TODO: Move project ID to a variable and find out how to use that.
   credentials = var.gcp_credentials
 }
 
-
-
-# data "google_cloud_run_locations" "default" { }
-
 resource "google_cloud_run_service" "default" {
-  name     = "frontend"
-  location = "us-central1"
+  for_each = var.regions
+
+  name     = "frontend-${each.value}"
+  location = each.value
 
   template {
     spec {
       containers {
         image = "gcr.io/formal-vertex-364508/ccecaa-frontend:latest"
+      }
+    }
+  }
+}
+
+resource "google_cloud_run_service" "default" {
+  for_each = var.regions
+
+  name     = "backend-${each.value}"
+  location = each.value
+
+  template {
+    spec {
+      containers {
+        image = "gcr.io/formal-vertex-364508/ccecaa-backend:latest"
       }
     }
   }
@@ -89,6 +103,6 @@ resource "google_cloud_run_service" "default" {
 #   }
 # }
 
-# output "url" {
-#   value = "http://${module.lb-http.external_ip}"
-# }
+output "url" {
+  value = "http://${module.lb-http.external_ip}"
+}
