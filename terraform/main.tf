@@ -38,7 +38,7 @@ resource "google_cloud_run_service" "default" {
     spec {
       containers {
         image = "gcr.io/formal-vertex-364508/ccecaa-backend:latest"
-      }
+      } 
     }
   }
 }*/
@@ -81,7 +81,7 @@ module "lb-http" {
       enable_cdn             = false
       custom_request_headers = null
       custom_response_headers = null
-      
+
       log_config = {
         enable      = true
         sample_rate = 1.0
