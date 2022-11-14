@@ -38,7 +38,7 @@ resource "google_cloud_run_service" "default" {
     spec {
       containers {
         image = "gcr.io/formal-vertex-364508/ccecaa-backend:latest"
-      } 
+      }
     }
   }
 }*/
