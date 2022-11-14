@@ -14,7 +14,7 @@ provider "google" {
 }
 
 resource "google_cloud_run_service" "default" {
-  for_each = var.regions
+  for_each = toset(var.regions)
 
   name     = "frontend-${each.value}"
   location = each.value
