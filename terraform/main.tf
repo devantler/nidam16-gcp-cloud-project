@@ -103,6 +103,6 @@ resource "google_cloud_run_service" "default" {
 #   }
 # }
 
-output "url" {
+/*output "url" {
   value = "http://${module.lb-http.external_ip}"
-}
+}*/
