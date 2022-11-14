@@ -9,3 +9,5 @@ Raw Blame
 # Local .terraform directories
 **/.terraform/*
 .terraform.lock.hcl
+*.tfstate
+*.tfstate.*
