@@ -5,12 +5,6 @@ variable "project_id" {
   default     = "formal-vertex-364508"
 }
 
-variable "gcp_credentials" {
-  type = string
-  sensitive = true
-  description = "Google Cloud service account credentials"
-}
-
 variable "regions" {
   type = list(string)
   default = ["us-central1"]

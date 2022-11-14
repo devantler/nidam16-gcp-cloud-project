@@ -91,11 +91,9 @@ jobs:
         with:
             cli_config_credentials_token: ${{ secrets.TF_API_TOKEN}}
       - run: terraform init
-        env:
-            GCP_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
       - run: terraform plan
         env:
-            gcp_credentials: ${{ secrets.GOOGLE_CREDENTIALS }}
+            GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
       - run: terraform apply -auto-approve
         env:
-            gcp_credentials: ${{ secrets.GOOGLE_CREDENTIALS }}
+            GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
