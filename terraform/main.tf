@@ -28,7 +28,7 @@ resource "google_cloud_run_service" "default" {
   }
 }
 
-resource "google_cloud_run_service" "default" {
+/*resource "google_cloud_run_service" "default" {
   for_each = var.regions
 
   name     = "backend-${each.value}"
@@ -41,7 +41,7 @@ resource "google_cloud_run_service" "default" {
       }
     }
   }
-}
+}*/
 
 # resource "google_cloud_run_service_iam_member" "default" {
 #   for_each = toset(data.google_cloud_run_locations.default.locations)
