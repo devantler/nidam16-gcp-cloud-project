@@ -6,7 +6,7 @@ on:
 
 env:
     GC_PROJECT_ID: formal-vertex-364508
-
+    GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 jobs:
   build-and-publish-ccecaa-frontend:
     runs-on: ubuntu-22.04
@@ -104,11 +104,5 @@ jobs:
             cli_config_credentials_token: ${{ secrets.TF_API_TOKEN}}
 
       - run: terraform init
-
-      - run: terraform plan -replace
-        env:
-            GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-
-      - run: terraform apply -auto-approve -replace
-        env:
-            GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+      - run: terraform plan
+      - run: terraform apply -auto-approve
