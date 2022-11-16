@@ -105,10 +105,10 @@ jobs:
 
       - run: terraform init
 
-      - run: terraform plan
+      - run: terraform plan -replace
         env:
             GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
-      - run: terraform apply -auto-approve
+      - run: terraform apply -auto-approve -replace
         env:
             GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
