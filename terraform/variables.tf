@@ -5,6 +5,24 @@ variable "project_id" {
 }
 
 variable "regions" {
-  type = list(string)
+  type    = list(string)
   default = ["us-central1"]
+}
+
+variable "frontend_env" {
+  description = "The environment of the frontend."
+  type = list(object({
+    name = string
+    value = string
+  }))
+  default = []
+}
+
+variable "backend_env" {
+  description = "The environment of the backend."
+  type = list(object({
+    name = string
+    value = string
+  }))
+  default = []
 }

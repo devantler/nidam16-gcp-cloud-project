@@ -103,5 +103,6 @@ jobs:
         with:
             terraform_wrapper: false
       - run: terraform init
+      - run: terraform validate
       - run: terraform plan
       - run: terraform apply -auto-approve
