@@ -39,7 +39,7 @@ resource "google_compute_region_network_endpoint_group" "frontend" {
   provider = google-beta
   for_each = toset(var.regions)
 
-  name                  = "neg-${each.key}"
+  name                  = "neg-frontend-${each.key}"
   network_endpoint_type = "SERVERLESS"
   region                = google_cloud_run_service.frontend[each.key].location
   cloud_run {

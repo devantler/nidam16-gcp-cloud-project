@@ -37,7 +37,7 @@ resource "google_compute_region_network_endpoint_group" "backend" {
   provider = google-beta
   for_each = toset(var.regions)
 
-  name                  = "neg-${each.key}"
+  name                  = "neg-backend-${each.key}"
   network_endpoint_type = "SERVERLESS"
   region                = google_cloud_run_service.backend[each.key].location
   cloud_run {
