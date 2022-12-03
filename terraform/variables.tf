@@ -28,7 +28,12 @@ variable "frontend_env" {
     name  = string
     value = string
   }))
-  default = []
+  default = [
+    {
+      name = "NODE_ENV"
+      value = "production"
+    }
+  ]
 }
 
 variable "backend_env" {
