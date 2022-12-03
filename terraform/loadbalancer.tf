@@ -2,7 +2,7 @@ module "lb-http" {
   source  = "GoogleCloudPlatform/lb-http/google//modules/serverless_negs"
   version = "~> 6.0"
 
-  project = var.project_id
+  project = var.gcp_project_id
   name    = "lb-cloud-project"
 
   ssl                             = false

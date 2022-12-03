@@ -8,7 +8,7 @@ resource "google_cloud_run_service" "frontend" {
   template {
     spec {
       containers {
-        image = "gcr.io/${var.project_id}/ccecaa-frontend:latest"
+        image = "gcr.io/${var.gcp_project_id}/ccecaa-frontend:latest"
         dynamic "env" {
           for_each = var.frontend_env
           content {

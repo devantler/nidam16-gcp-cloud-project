@@ -1,12 +1,12 @@
 import { io, Socket } from "socket.io-client";
-import constansts from "../common/Constants";
+import constants from "../common/Constants";
 
 export class TelemetryService {
   private static instance: TelemetryService;
   private static startTime: Date | null;
   private static endTime: Date | null;
   private static telemetryName: string;
-  private static socketConnectionString = constansts.serverBaseURL;
+  private static socketConnectionString = process.env.NODE_ENV === 'production' ? constants.serverBaseURL_production : constants.serverBaseURL_development;
   private static socket: Socket | null = null;
 
   private constructor() { 

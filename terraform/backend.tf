@@ -7,7 +7,7 @@
 #   template {
 #     spec {
 #       containers {
-#         image = "gcr.io/${var.project_id}/ccecaa-backend:latest"
+#         image = "gcr.io/${var.gcp_project_id}/ccecaa-backend:latest"
 #         dynamic "env" {
 #           for_each = var.backend_env
 #           content {

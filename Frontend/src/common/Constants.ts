@@ -1,5 +1,6 @@
-const constansts = {
-    serverBaseURL: 'http://localhost:3000'
+const constants = {
+    serverBaseURL_development: 'http://localhost:3000',
+    serverBaseURL_production: 'http://localhost:3000'
 }
 
-export default constansts;
+export default constants;

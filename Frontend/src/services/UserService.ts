@@ -1,8 +1,8 @@
-import constansts from '../common/Constants';
+import constants from '../common/Constants';
 
 export default class UserService {
 
-  private static serverBaseURL = `${constansts.serverBaseURL}/users`;
+  private static serverBaseURL = `${process.env.NODE_ENV === 'production' ? constants.serverBaseURL_production : constants.serverBaseURL_development}/users`;
 
   public static async getUserIdFromLocalStorage(): Promise<string | undefined> {
     try {

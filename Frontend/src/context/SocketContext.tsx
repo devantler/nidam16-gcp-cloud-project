@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useEffect } from "react";
 import { io, Socket } from "socket.io-client";
-import constansts from './../common/Constants';
+import constants from './../common/Constants';
 import { getOrRegisterUser, UserContext } from "./UserContext";
 
-const socketConnectionString = constansts.serverBaseURL;
+const socketConnectionString = process.env.NODE_ENV === 'production' ? constants.serverBaseURL_production : constants.serverBaseURL_development;
 let socket: Socket | null = null;
 
 if (socketConnectionString) {

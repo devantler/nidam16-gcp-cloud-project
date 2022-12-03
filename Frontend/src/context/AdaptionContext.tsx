@@ -6,7 +6,7 @@ import { ExperimentCounterService } from "../services/ExperimentCounterService";
 import { UIElement } from './../adaptions/UIElement';
 import { UserContext } from "./UserContext";
 import { EmotionSnapshot } from "../common/Types";
-import constansts from './../common/Constants';
+import constants from './../common/Constants';
 import { AdaptionRecorder } from "../services/AdaptionRecorder";
 import { TelemetryService } from "../services/TelemetryService";
 
@@ -292,7 +292,8 @@ export const AdaptionContextProvider = (props: AdaptionContextProviderProps) => 
 
   const emitAdaptions = async () => {
     if (AdaptionRecorder.getAdaptions().length > 0) {
-      const emitResult = await fetch(`${constansts.serverBaseURL}/adaptions`, {
+      const serverUrl = process.env.NODE_ENV === 'production' ? constants.serverBaseURL_production : constants.serverBaseURL_development;
+      const emitResult = await fetch(`${serverUrl}/adaptions`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

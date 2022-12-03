@@ -14,8 +14,8 @@ const SurveyScreen = () => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const res = await fetch(`${constants.serverBaseURL}/surveys/text`, {
+    const serverUrl = process.env.NODE_ENV === 'production' ? constants.serverBaseURL_production : constants.serverBaseURL_development
+    const res = await fetch(`${serverUrl}/surveys/text`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
