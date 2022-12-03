@@ -25,7 +25,7 @@ variable "regions" {
 variable "frontend_env" {
   description = "The environment of the frontend."
   type = list(object({
-    name = string
+    name  = string
     value = string
   }))
   default = []
@@ -34,10 +34,27 @@ variable "frontend_env" {
 variable "backend_env" {
   description = "The environment of the backend."
   type = list(object({
-    name = string
+    name  = string
     value = string
   }))
-  default = []
+  default = [
+    {
+      name  = "MONGO_DB_CONNECTION_STRING"
+      value = "mongodb+srv://devantler:OUFbpEDdIBoxXhrg@mongodb-cluster.pgwscm0.mongodb.net/?retryWrites=true&w=majority"
+    },
+    {
+      name = "MONGO_DB_NAME"
+      value = "devantler"
+    },
+    {
+      name = "REDIS_URI"
+      value = "redis://10.129.10.100:6379"
+    },
+    {
+      name = "NODE_ENV"
+      value = "production"
+    }
+  ]
 }
 
 variable "mongodb_atlas_public_key" {

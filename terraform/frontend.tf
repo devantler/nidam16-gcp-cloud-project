@@ -9,6 +9,10 @@ resource "google_cloud_run_service" "frontend" {
     spec {
       containers {
         image = "gcr.io/${var.gcp_project_id}/ccecaa-frontend:latest"
+        ports {
+          container_port = 8080
+        }
+
         dynamic "env" {
           for_each = var.frontend_env
           content {
