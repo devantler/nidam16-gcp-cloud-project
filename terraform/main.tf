@@ -8,7 +8,7 @@ provider "google-beta" {
 
 terraform {
   backend "gcs" {
-    bucket = "f3c2369c2f1ea89d-bucket-tfstate"
+    bucket = "bucket-tfstate-devantler-cloud-project"
     prefix = "terraform/state"
   }
 }

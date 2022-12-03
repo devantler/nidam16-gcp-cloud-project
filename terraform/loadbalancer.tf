@@ -21,7 +21,7 @@ module "lb-http" {
       }
 
       groups = [
-        for neg in merge(google_compute_region_network_endpoint_group.frontend, google_compute_region_network_endpoint_group.backend) :
+        for neg in merge(google_compute_region_network_endpoint_group.frontend) :# , google_compute_region_network_endpoint_group.backend) :
         {
           group = neg.id
         }
