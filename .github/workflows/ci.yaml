@@ -5,7 +5,7 @@ on:
         branches: [master]
 
 env:
-    GC_PROJECT_ID: formal-vertex-364508
+    GC_PROJECT_ID: ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
     GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 jobs:
   build-and-publish-ccecaa-frontend:
@@ -106,3 +106,6 @@ jobs:
       - run: terraform validate
       - run: terraform plan
       - run: terraform apply -auto-approve
+        env:
+            TF_VAR_project_id: ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
+            TF_VAR_regions: '["us-central1"]'
