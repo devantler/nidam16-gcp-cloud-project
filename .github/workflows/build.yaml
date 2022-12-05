@@ -12,7 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Build Frontend
-        run: cd Frontend; npm install; npm run build;
+        run: cd Frontend; npm install; CI=false && npm run build;
 
   build-backend:
     runs-on: ubuntu-22.04
