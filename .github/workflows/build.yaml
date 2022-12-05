@@ -1,8 +1,7 @@
 name: Build and test
 on:
   pull_request:
-  push: 
-    branches: 
+    branches:
       - master
 
 jobs:
