@@ -1,0 +1,23 @@
+name: Build and test
+on:
+  pull_request:
+  push: 
+    branches: 
+      - master
+
+jobs:
+  build-frontend:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Build Frontend
+        run: cd Frontend; npm install; npm run build;
+
+  build-backend:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Build Backend
+        run: cd Backend; npm install; npm run build;
