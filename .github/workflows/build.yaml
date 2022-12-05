@@ -8,11 +8,24 @@ on:
 jobs:
   auto-merge:
     runs-on: ubuntu-22.04
+    env:
+      USER_ALLOWLIST: |
+        '[
+          "${{github.repository_owner}}",
+          "dependabot[bot]",
+          "renovate[bot]"
+        ]'
     steps:
-      - uses: peter-evans/enable-pull-request-automerge@v2
+      - name: Enable auto-merge
+        if: >-
+          ${{
+            contains(fromJSON(env.USER_ALLOWLIST), github.actor) &&
+            contains(fromJSON(env.USER_ALLOWLIST), github.event.pull_request.user.login)
+          }}
+        uses: peter-evans/enable-pull-request-automerge@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+          pull-request-number: ${{github.event.pull_request.number}}
           merge-method: squash
 
   build-frontend:
