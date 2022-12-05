@@ -6,22 +6,6 @@ on:
       - master
 
 jobs:
-  build-frontend:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Build Frontend
-        run: cd Frontend; npm install; CI=false && npm run build;
-
-  build-backend:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Build Backend
-        run: cd Backend; npm install; npm run build;
-  
   auto-merge:
     runs-on: ubuntu-22.04
     steps:
@@ -30,3 +14,22 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
           merge-method: squash
+
+  build-frontend:
+    needs: [auto-merge]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Build Frontend
+        run: cd Frontend; npm install; CI=false && npm run build;
+
+  build-backend:
+    needs: [auto-merge]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Build Backend
+        run: cd Backend; npm install; npm run build;
+  
