@@ -38,5 +38,5 @@ module "lb-http" {
 }
 
 output "url" {
-  value = "https://${module.lb-http.external_ip}"
+  value = "http://${module.lb-http.external_ip}"
 }
