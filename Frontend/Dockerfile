@@ -14,11 +14,11 @@ RUN npm run build
 
 FROM nginx:alpine as production-stage
 
-ENV NODE_ENV=production, REACT_APP_REGION=asia-east1
+ENV NODE_ENV=production, REGION=asia-east1
 
 COPY --from=build-stage /app/build /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf.template /etc/nginx/conf.d/default.conf.template
 
 EXPOSE 8080
 
-CMD sh -c "envsubst '$NODE_ENV $REACT_APP_REGION' < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/site.conf && exec nginx -g 'daemon off;'"
+CMD sh -c "envsubst < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
