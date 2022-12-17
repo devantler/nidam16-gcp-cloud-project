@@ -7,7 +7,7 @@ module "lb-http" {
 
   ssl                             = false
   managed_ssl_certificate_domains = []
-  https_redirect                  = false
+  https_redirect                  = true
   backends = {
     default = {
       description             = null
@@ -38,5 +38,5 @@ module "lb-http" {
 }
 
 output "url" {
-  value = "http://${module.lb-http.external_ip}"
+  value = "https://${module.lb-http.external_ip}"
 }
