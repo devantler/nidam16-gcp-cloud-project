@@ -1,12 +1,10 @@
-var express = require('express')
-
 const constants = {
     serverBaseURL_development: 'http://localhost:3000',
     serverBaseURL_production: getServerBaseURL()
 }
 
 function getServerBaseURL() {
-    var region = express.req.get('host').split("u7hplahhma")[0].split("frontend-")[1];
+    var region = window.location.href.split("u7hplahhma")[0].split("frontend-")[1];
     var fullUrl = ""
     switch (region) {
         case "us-central1":
