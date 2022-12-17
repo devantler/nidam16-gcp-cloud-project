@@ -7,7 +7,7 @@ module "lb-http" {
 
   ssl                             = false
   managed_ssl_certificate_domains = []
-  https_redirect                  = true
+  https_redirect                  = false
   backends = {
     default = {
       description             = null
