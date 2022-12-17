@@ -15,6 +15,7 @@ RUN npm run build
 FROM nginx:alpine as production-stage
 
 ENV NODE_ENV production
+ENV REACT_APP_REGION asia-east1
 
 COPY --from=build-stage /app/build /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
