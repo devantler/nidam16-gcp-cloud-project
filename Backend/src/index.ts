@@ -28,6 +28,7 @@ if (process.env.NODE_ENV === 'development') {
       "https://frontend-asia-east1-u7hplahhma-de.a.run.app",
       "https://backend-asia-east1-u7hplahhma-de.a.run.app",
 
+      "http://cloud-project.nda-cloud.com",
       "http://34.149.175.140"
     ]
   }
