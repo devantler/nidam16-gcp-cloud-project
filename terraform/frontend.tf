@@ -21,7 +21,7 @@ resource "google_cloud_run_service" "frontend" {
           }
         }
         env {
-          name = "REACT_APP_REGION"
+          name = "REGION"
           value = each.value
         }
       }
