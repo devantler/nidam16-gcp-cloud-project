@@ -4,7 +4,7 @@ const constants = {
 }
 
 function getServerBaseURL() {
-    var region = window.location.href.split("u7hplahhma")[0].split("frontend-")[1];
+    var region = window.location.href.split("-u7hplahhma")[0].split("frontend-")[1];
     console.log(region);
     var fullUrl = ""
     switch (region) {
