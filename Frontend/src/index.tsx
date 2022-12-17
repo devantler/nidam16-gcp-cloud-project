@@ -5,6 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
+declare global {
+  interface Window {
+    REACT_APP_REGION?: any;
+  }
+}
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

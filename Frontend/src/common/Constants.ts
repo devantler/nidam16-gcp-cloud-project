@@ -9,7 +9,7 @@ function getServerBaseURL() {
     console.log(process.env.NODE_ENV);
     console.log(process.env.REGION);
     console.log(process.env.REACT_APP_REGION);
-    switch (process.env.REACT_APP_REGION) {
+    switch (window.REACT_APP_REGION) {
         case "us-central1":
             fullUrl = "https://backend-us-central1-u7hplahhma-uc.a.run.app";
             break;
