@@ -5,9 +5,10 @@ module "lb-http" {
   project = var.gcp_project_id
   name    = "lb-cloud-project"
 
-  ssl                             = false
-  managed_ssl_certificate_domains = []
-  https_redirect                  = false
+  ssl                             = true
+  managed_ssl_certificate_domains = ["www.nda-cloud.com"]
+  https_redirect                  = true
+  
   backends = {
     default = {
       description             = null
@@ -37,6 +38,6 @@ module "lb-http" {
   }
 }
 
-output "url" {
-  value = "http://${module.lb-http.external_ip}"
-}
+# output "url" {
+#   value = "https://${module.lb-http.external_ip}"
+# }
