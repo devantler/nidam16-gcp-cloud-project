@@ -16,10 +16,18 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   corsOptions = {
     origin: [
+      "https://frontend-us-central1-u7hplahhma-uc.a.run.app",
       "https://backend-us-central1-u7hplahhma-uc.a.run.app",
+
+      "https://frontend-europe-west1-u7hplahhma-ew.a.run.app",
       "https://backend-europe-west1-u7hplahhma-ew.a.run.app",
+
+      "https://frontend-europe-north1-u7hplahhma-lz.a.run.app",
       "https://backend-europe-north1-u7hplahhma-lz.a.run.app",
+
+      "https://frontend-asia-east1-u7hplahhma-de.a.run.app",
       "https://backend-asia-east1-u7hplahhma-de.a.run.app",
+
       "http://34.149.175.140"
     ]
   }
