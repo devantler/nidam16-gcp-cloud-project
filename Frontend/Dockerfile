@@ -21,4 +21,4 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 8080
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD sh -c "envsubst '$NODE_ENV $REACT_APP_REGION' < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/site.conf && exec nginx -g 'daemon off;'"
