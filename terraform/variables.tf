@@ -32,10 +32,6 @@ variable "frontend_env" {
     {
       name  = "NODE_ENV"
       value = "production"
-    },
-    {
-      name = "BASE_URL"
-      value = "https://backend-us-central1-u7hplahhma-uc.a.run.app"
     }
   ]
 }

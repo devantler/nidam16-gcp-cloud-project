@@ -12,17 +12,13 @@ resource "google_cloud_run_service" "frontend" {
         ports {
           container_port = 8080
         }
-
-        dynamic "env" {
-          for_each = var.frontend_env
-          content {
-            name  = env.value["name"]
-            value = env.value["value"]
-          }
+        env {
+          name  = "REGION"
+          value = each.value
         }
         env {
-          name = "REGION"
-          value = each.value
+          name  = "NODE_ENV"
+          value = "production"
         }
       }
     }
