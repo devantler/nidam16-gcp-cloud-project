@@ -19,7 +19,7 @@ variable "tfstate_bucket_name" { // Remember to set your bucket name here, and i
 
 variable "regions" {
   type    = list(string)
-  default = ["us-central1"]
+  default = ["us-central1", "europe-west1", "europe-north1", "asia-east1"]
 }
 
 variable "frontend_env" {
@@ -30,8 +30,12 @@ variable "frontend_env" {
   }))
   default = [
     {
-      name = "NODE_ENV"
+      name  = "NODE_ENV"
       value = "production"
+    },
+    {
+      name = "BASE_URL"
+      value = "https://backend-us-central1-u7hplahhma-uc.a.run.app"
     }
   ]
 }
@@ -48,15 +52,15 @@ variable "backend_env" {
       value = "mongodb+srv://devantler:OUFbpEDdIBoxXhrg@mongodb-cluster.pgwscm0.mongodb.net/?retryWrites=true&w=majority"
     },
     {
-      name = "MONGO_DB_NAME"
+      name  = "MONGO_DB_NAME"
       value = "devantler"
     },
     {
-      name = "REDIS_URI"
+      name  = "REDIS_URI"
       value = "redis://10.129.10.100:6379"
     },
     {
-      name = "NODE_ENV"
+      name  = "NODE_ENV"
       value = "production"
     }
   ]

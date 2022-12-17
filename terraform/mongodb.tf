@@ -1,8 +1,3 @@
-provider "mongodbatlas" {
-  public_key  = var.mongodb_atlas_public_key
-  private_key = var.mongodb_atlas_private_key
-}
-
 resource "mongodbatlas_cluster" "test" {
   project_id   = var.mongodb_project_id
   name         = "mongodb-cluster"

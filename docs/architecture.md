@@ -35,20 +35,16 @@ cloud GCP {
 ' Relations
 Developer -up-> [GitHub Repository]: Pushes code
 User --> cdn
-User --> MobileFrontend
 
-[GitHub Repository] <.up. gha : Triggered by push
-gha -up-> iac : Triggers Terraform
+[GitHub Repository] .up.> gha : Triggered by push
+gha -up-> iac : Runs Terraform
 iac -up-> gcpapis: Calls provisioning APIs
 gcpapis --> GCP: Creates resources
 
 cdn <--> lb1 : Requests and caching
 lb1 --> WebFrontend
-lb2 --> Backend
 WebFrontend --> Backend
-MobileFrontend ---> lb2
 WebFrontend -right-> [Google Maps]
-MobileFrontend ---> [Google Maps]
 
 Backend --> mongo
 Backend -right-> Redis : Caching and state
