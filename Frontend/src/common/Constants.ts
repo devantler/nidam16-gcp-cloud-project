@@ -4,10 +4,8 @@ const constants = {
 }
 
 function getServerBaseURL() {
-    var region = window.location.href.split("-u7hplahhma")[0].split("frontend-")[1];
-    console.log(region);
     var fullUrl = ""
-    switch (region) {
+    switch (process.env.REGION) {
         case "us-central1":
             fullUrl = "https://backend-us-central1-u7hplahhma-uc.a.run.app";
             break;

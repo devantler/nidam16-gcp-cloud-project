@@ -20,6 +20,10 @@ resource "google_cloud_run_service" "frontend" {
             value = env.value["value"]
           }
         }
+        env {
+          name = "REGION"
+          value = each.value
+        }
       }
     }
   }
