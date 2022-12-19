@@ -21,7 +21,6 @@ interface "GCP APIs" as gcpapis
 cloud GCP {
     interface "Cloud CDN" as cdn
     interface "Load Balancer" as lb1
-    interface "Load Balancer" as lb2
     package "Cloud Run" {
         [WebFrontend]
         [Backend]
@@ -30,7 +29,6 @@ cloud GCP {
     database Redis
     [Google Maps]
 }
-[MobileFrontend]
 
 ' Relations
 Developer -up-> [GitHub Repository]: Pushes code
