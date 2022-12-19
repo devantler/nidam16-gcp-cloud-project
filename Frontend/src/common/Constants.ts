@@ -19,7 +19,7 @@ function getServerBaseURL() {
             fullUrl = "https://backend-asia-east1-u7hplahhma-de.a.run.app";
             break;
         default:
-            throw new Error("Region not found");
+            fullUrl = 'http://localhost:3000';
     }
     return fullUrl;
 }

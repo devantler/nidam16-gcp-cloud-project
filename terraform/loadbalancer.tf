@@ -12,7 +12,7 @@ module "lb-http" {
   backends = {
     default = {
       description             = null
-      enable_cdn              = false
+      enable_cdn              = true
       custom_request_headers  = null
       custom_response_headers = null
 
