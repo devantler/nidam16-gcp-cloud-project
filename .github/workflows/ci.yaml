@@ -30,7 +30,7 @@ jobs:
           images: ${{ github.repository_owner }}/ccecaa-frontend
 
       - name: Build and load image with caching
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: Frontend/
           file: Frontend/Dockerfile
@@ -70,7 +70,7 @@ jobs:
           images: ${{ github.repository_owner }}/ccecaa-backend
 
       - name: Build and load image with caching
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: Backend/
           file: Backend/Dockerfile
